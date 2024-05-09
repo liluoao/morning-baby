@@ -65,10 +65,6 @@ except WeChatClientException as e:
 
 wm = WeChatMessage(client)
 data = {
-  "city": {
-    "value": city,
-    "color": get_random_color()
-  },
   "date": {
     "value": today.strftime('%Y年%m月%d日'),
     "color": get_random_color()
