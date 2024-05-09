@@ -49,6 +49,7 @@ def get_birthday_left():
 # 彩虹屁 接口不稳定，所以失败的话会重新调用，直到成功
 def get_words():
   words = requests.get("https://api.shadiao.pro/chp")
+  print words.json()
   if words.status_code != 200:
     return get_words()
   return words.json()['data']['text']
@@ -65,10 +66,6 @@ except WeChatClientException as e:
 
 wm = WeChatMessage(client)
 data = {
-  "date": {
-    "value": today.strftime('%Y年%m月%d日'),
-    "color": get_random_color()
-  },
   "love_days": {
     "value": get_memorial_days_count(),
     "color": get_random_color()
