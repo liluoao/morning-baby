@@ -49,9 +49,10 @@ def get_birthday_left():
 # 彩虹屁 接口不稳定，所以失败的话会重新调用，直到成功
 def get_words():
   response = requests.get("https://api.shadiao.pro/chp")
-  print(response.json()['data'])
   if response.status_code != 200:
     return get_words()
+    
+  print(response.json()['data']['text'])
   return response.json()['data']['text']
 
 # 随机颜色
