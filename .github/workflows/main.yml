@@ -1,7 +1,7 @@
 name: morning
 on:
   schedule:
-  - cron:  '54 23 * * *'
+  - cron:  '0 0 * * *'
   workflow_dispatch:
 
 jobs:
@@ -16,10 +16,8 @@ jobs:
         ref: master
 
     - name: sender
-      uses: actions/setup-python@main
-      with:
-        python-version: '3.x'
-        architecture: 'x64'
+      uses: actions/setup-python@v4
+
     - run: pip install -r ./requirements.txt && python ./main.py
 
     env:
