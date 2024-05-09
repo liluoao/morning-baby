@@ -6,15 +6,13 @@ import requests
 import os
 import random
 
-today = datetime.utcnow() + timedelta(hours=8)  # 东八区
+today = datetime.utcnow() + timedelta(hours=8)
 today = datetime.strptime(str(today.date()), "%Y-%m-%d")
-start_date = os.getenv('START_DATE')
-city = os.getenv('CITY')
-birthday = os.getenv('BIRTHDAY')
 
+start_date = os.getenv('START_DATE')
+birthday = os.getenv('BIRTHDAY')
 app_id = os.getenv('APP_ID')
 app_secret = os.getenv('APP_SECRET')
-
 user_ids = os.getenv('USER_ID', '').split("\n")
 template_id = os.getenv('TEMPLATE_ID')
 
@@ -54,9 +52,6 @@ def get_words():
   if words.status_code != 200:
     return get_words()
   return words.json()['data']['text']
-
-def format_temperature(temperature):
-  return math.floor(temperature)
 
 # 随机颜色
 def get_random_color():
